@@ -1,5 +1,11 @@
 class Admin::ProductsController < ApplicationController
 
+  # USER_ID, PASSWORD =  ENV[USER_ID],  ENV[PASSWORD]
+  http_basic_authenticate_with name: ENV["USER_ID"], password: ENV["PASSWORD"]
+  # http_basic_authenticate_with name: "a", password: "b"
+  # Require authentication only for edit and delete operation
+  #  before_filter :authenticate #, :only => [ :edit, :delete ]
+
   def index
     @products = Product.order(id: :desc).all
   end
