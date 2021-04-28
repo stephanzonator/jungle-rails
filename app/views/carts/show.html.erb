@@ -1,9 +1,10 @@
 <section class="cart-show">
 
-  <header class="page-header">
-    <h1>My Cart</h1>
-  </header>
+<header class="page-header">
+<h1>My Cart</h1>
+</header>
 
+<%if cart_subtotal_cents > 0%>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -32,21 +33,25 @@
     </table>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <%= form_tag orders_path do %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-amount="<%= cart_subtotal_cents %>"
+            data-name="Jungle"
+            data-description="Khurram Virani's Jungle Order"
+            data-locale="auto"
+            data-email="kvirani@gmail.com"
+            data-currency="cad">
+          </script>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+  <p class="alert alert-warning">Your cart is empty. Come back when you've  <a href="/products">selected something to buy,</a>  won't you?</p>
+  <% end %>
 
 </section>
