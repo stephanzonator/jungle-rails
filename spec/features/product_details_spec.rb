@@ -16,20 +16,21 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     end
   end
 
-  scenario "They see all products" do
+  scenario "Clicking the details link takes a user to the products page" do
     # ACT
     visit root_path
-    find('.product header').click
+    # find('.product header').click
+    # find_link('/products/1').trigger("click")
+    find_link("Details").trigger("click")
 
     # visit '/products/1'
 
-    puts page.html
+    # puts page.html
 
     # DEBUG
-    save_screenshot
+    # save_screenshot
 
     # VERIFY
-    expect(page).to be_present
     expect(page).to have_css '.product-detail'
   end
 end
