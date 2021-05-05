@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
-  resources :about, only: [:index, :show]
+  resources :about, only: [:index]
 
   namespace :admin do
     root to: 'dashboard#show'

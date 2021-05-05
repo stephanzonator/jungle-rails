@@ -3,9 +3,6 @@
   <header class="page-header">
     <h1>Order <%= @order.id %></h1>
   </header>
-
-
-  #image, name, description, totals
   
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
@@ -25,20 +22,20 @@
 
           <tr>
             <td>
-              <%# image_tag @products[item.product_id].image %>
+              
               <%= image_tag @products[item.product_id].image.thumb %>
             </td>
             <td>
-              <p><%= @products[item.product_id].name %></p>
+              <%= @products[item.product_id].name %>
             </td>
             <td>
-              <p><%= @products[item.product_id].description %></p>
+              <%= @products[item.product_id].description %>
             </td>
             <td>
-              <p>$<%= @products[item.product_id].price %></p>
+              $<%= @products[item.product_id].price %>
             </td>
             <td>
-              <p><%= item.quantity %></p>
+              <%= item.quantity %>
             </td>
           </tr>
 
